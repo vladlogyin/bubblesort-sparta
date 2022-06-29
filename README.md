@@ -1,24 +1,41 @@
-# Bubble sort
+# Sort Manager Project
 
-Bubble sort works by comparing adjacent elements and swapping them if they're out of order. The pairs of adjacent elements are selected in an incremental fashion; from one end of the collection, to the other;
+An app that enables you to compare different sorting
 
-|-|
-4 1 2 3
-  |-|
-1 4 2 3
-    |-|
-1 2 4 3
+## Implementation details
 
-1 2 3 4 
+This app is written around
 
-## Implementation
+Instead of having a factory that needs modified to allow for new `Sorter` implementations, the `BackendProvider` class uses reflection to list all "subclasses" within a package. Once a subclass is selected by the user, it is instantiated.
 
-The code is implemented through lots of generics.
-Sort class which has an overloaded sort function for different types of collections such as arrays, lists, etc.
+Although the UI methods are declared inside of the `SortView` interface, it is not user selectable, and the only functional implementation so far is the terminal-based UI. 
 
-All of the public sort functions implement a comparison function and a lambda function so that are then passed to an internal bubble sort function which just ties everything together.
+Concurrent computing concepts are used to implement a request response system between the Controller and the View of the app. This is done to enable future UI extensions such as a proper GUI or alternative terminal UIs.
+
+## Algorithms implemented so far
+
+### BubbleSort
+  * Implemented using generics
+### MergeSort
+  * Not an in-place implementation
+  * Recursive
+#### BinaryTreeSort
+  * Does not discard duplicates
+  * Iterative
+  * Extraction done using `Stack`
+
+## Sorter
+
+### SortView
 
 
-## Similar sorting algorithms
+# Troubleshooting
+ * Logs are located in `logs/`
+# TODO
 
-Shaker sort
+
+# Improvements
+ - Use Future and promise instead of callback interfaces
+ 
+
+ 
