@@ -1,10 +1,10 @@
 # Sort Manager Project
 
-An app that enables you to compare different sorting
+An app that enables you to compare different sorting algorithms.
 
 ## Implementation details
 
-This app is written around
+This app is written around an MVC design pattern. The sorting algorithms are hot-swappable models, `SortManager` is the controller, and `SortView` is an interface on top of which different UIs can be built.
 
 Instead of having a factory that needs modified to allow for new `Sorter` implementations, the `BackendProvider` class uses reflection to list all "subclasses" within a package. Once a subclass is selected by the user, it is instantiated.
 
@@ -19,23 +19,34 @@ Concurrent computing concepts are used to implement a request response system be
 ### MergeSort
   * Not an in-place implementation
   * Recursive
-#### BinaryTreeSort
+### BinaryTreeSort
   * Does not discard duplicates
   * Iterative
   * Extraction done using `Stack`
 
-## Sorter
+## UI stuff
 
-### SortView
+* Request/Response implemented through callbacks
 
+## Benchmarking
+
+Benchmarking is done by repeatedly sorting the same generated array until over 100ms have passed so that overheads are 
+
+## Java language features used
+
+* Range-based for loops (for each)
+* Generics (Map<>, Class<>, etc)
+* Exception handling and custon exception classes
+* Reflection
+* Maven build system for automatic dependency resolution
 
 # Troubleshooting
  * Logs are located in `logs/`
-# TODO
 
 
 # Improvements
  - Use Future and promise instead of callback interfaces
+ - Magically refactor all of the technical debt away
  
 
  
